@@ -1,4 +1,4 @@
-import classes from "./Navigation.module.css";
+import "./Navigation.module.css";
 import { Menu } from "antd";
 import { EnvironmentOutlined } from "@ant-design/icons";
 
