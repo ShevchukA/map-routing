@@ -1,0 +1,7 @@
+/* импорт стилей leaflet */
+@import url("https://unpkg.com/leaflet@1.9.4/dist/leaflet.css");
+
+main {
+  background-color: aquamarine;
+  flex: 1;
+}
