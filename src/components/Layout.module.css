@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+nav {
+  width: 250px;
+  background-color: brown;
+}
+
+main {
+  background-color: aquamarine;
+  flex: 1;
+}
