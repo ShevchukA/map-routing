@@ -1,16 +1,19 @@
 import "./Navigation.module.css";
 import { Menu } from "antd";
 import { EnvironmentOutlined } from "@ant-design/icons";
+import { useDispatch, useSelector } from "react-redux";
+import { routerActions } from "../store/router-slice";
 
 function Navigation() {
-  const items = [
-    { label: "Маршрут 1", key: "1", icon: <EnvironmentOutlined /> },
-    { label: "Маршрут 2", key: "2", icon: <EnvironmentOutlined /> },
-    { label: "Маршрут 3", key: "3", icon: <EnvironmentOutlined /> },
-  ];
+  const dispatch = useDispatch();
+  const routes = useSelector((store) => store.router.routes);
+
+  const items = routes.map((route, index) => {
+    return { label: route.title, key: index, icon: <EnvironmentOutlined /> };
+  });
 
   function selectionHandler(e) {
-    console.log("click ", e);
+    dispatch(routerActions.selectRoute(Number(e.key)));
   }
 
   return (
@@ -18,7 +21,7 @@ function Navigation() {
       <p>Выберите Ваш маршрут:</p>
       <Menu
         items={items}
-        defaultSelectedKeys={["1"]}
+        defaultSelectedKeys={["0"]}
         mode="inline"
         theme="dark"
         onClick={selectionHandler}
