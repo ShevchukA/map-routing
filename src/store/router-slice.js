@@ -2,7 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const routerSlice = createSlice({
   name: "router",
-  initialState: { routes: [], selectedRoute: null, routesIsLoading: false },
+  initialState: {
+    routes: [],
+    selectedRoute: null,
+    track: [],
+    trackIsLoading: false,
+    routesIsLoading: false,
+  },
   reducers: {
     selectRoute(state, action) {
       state.selectedRoute = state.routes[action.payload];
@@ -25,13 +31,20 @@ const routerReducer = routerSlice.reducer; // reducer для консигури�
 const fetchRoutes = () => {
   return async (dispatch) => {
     dispatch(routerActions.setRouteIsLoading());
-    const response = await fetch("https://api.npoint.io/a1d9abab6c190cee54c1");
+    try {
+      const response = await fetch(
+        "https://api.npoint.io/a1d9abab6c190cee54c1"
+      );
 
-    if (!response.ok) {
-      throw new Error("Fetching data error");
+      if (!response.ok) {
+        throw new Error("Не удалось загрузить маршруты. Попробуйте позже");
+      }
+
+      const data = await response.json();
+      dispatch(routerActions.updateRoutes(data || [])); // возвращаем пустой массив в случае ошибки
+    } catch (error) {
+      alert(error);
     }
-    const data = await response.json();
-    dispatch(routerActions.updateRoutes(data || [])); // возвращаем пустой массив в случае ошибки
   };
 };
 
