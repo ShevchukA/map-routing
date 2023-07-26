@@ -8,9 +8,9 @@ function Map() {
 
   useEffect(() => {}, []);
 
-  const coordinates = selectedRoute && [...selectedRoute.coordinates];
+  const points = selectedRoute && [...selectedRoute.coordinates];
 
-  const position = [51.505, -0.09]; // Координаты начальной позиции карты
+  const position = [59.938955, 30.315644]; // Координаты начальной позиции карты
 
   return (
     <main>
@@ -24,7 +24,7 @@ function Map() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
         {selectedRoute &&
-          coordinates.map((position, index) => {
+          points.map((position, index) => {
             return (
               <Marker key={index} position={position}>
                 <Popup>{`Точка ${index + 1}: ${position}`}</Popup>

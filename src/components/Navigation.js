@@ -7,6 +7,7 @@ import { routerActions } from "../store/router-slice";
 function Navigation() {
   const dispatch = useDispatch();
   const routes = useSelector((store) => store.router.routes);
+  const routesIsLoading = useSelector((state) => state.router.routesIsLoading);
 
   const items = routes.map((route, index) => {
     return { label: route.title, key: index, icon: <EnvironmentOutlined /> };
@@ -18,7 +19,9 @@ function Navigation() {
 
   return (
     <nav>
-      <p>Выберите Ваш маршрут:</p>
+      <p>{`${
+        routesIsLoading ? "Загружаем маршруты..." : "Выберите Ваш маршрут"
+      }`}</p>
       <Menu
         items={items}
         defaultSelectedKeys={["0"]}
