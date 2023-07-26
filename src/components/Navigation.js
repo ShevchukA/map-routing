@@ -7,9 +7,9 @@ import { useEffect } from "react";
 
 function Navigation() {
   const dispatch = useDispatch();
-  const routes = useSelector((store) => store.router.routes);
-  const routesIsLoading = useSelector((state) => state.router.routesIsLoading);
-  const selectedRoute = useSelector((store) => store.router.selectedRoute);
+  const routes = useSelector((store) => store.router.routes); // Список маршрутов
+  const routesIsLoading = useSelector((state) => state.router.routesIsLoading); // Состояние загрузки выбранного маршрута
+  const selectedRoute = useSelector((store) => store.router.selectedRoute); // Выбраный маршрут
 
   // Маршруты для меню выбора
   const items = routes.map((route, index) => {

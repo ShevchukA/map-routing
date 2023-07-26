@@ -8,6 +8,7 @@ const routerSlice = createSlice({
     track: null,
     trackIsLoading: true,
     routesIsLoading: true,
+    error: null,
   },
   reducers: {
     selectRoute(state, action) {
@@ -27,6 +28,10 @@ const routerSlice = createSlice({
     updateTrack(state, action) {
       state.track = action.payload;
       state.trackIsLoading = false;
+    },
+    setError(state, action) {
+      state.error = action.payload;
+      alert(action.payload.message);
     },
   },
 });
@@ -50,7 +55,7 @@ const fetchRoutes = () => {
       const data = await response.json();
       dispatch(routerActions.updateRoutes(data || [])); // возвращаем пустой массив в случае ошибки
     } catch (error) {
-      alert(error);
+      dispatch(routerActions.setError({ message: error }));
     }
   };
 };
@@ -60,27 +65,28 @@ const fetchTrack = (points) => {
   return async (dispatch) => {
     dispatch(routerActions.setTrackIsLoading());
     const trackPoints = points.join(";");
-    console.log(trackPoints);
-    // const trackPoints = "38.716615,-9.137262;38.714451,-9.152471";
+
+    const url = `https://trueway-directions2.p.rapidapi.com/FindDrivingRoute?stops=${trackPoints}`;
+    const options = {
+      method: "GET",
+      headers: {
+        "X-RapidAPI-Key": "ad1fe90187msh5f3705307a9b274p107629jsnbdb8be07eb2c", // в secure environment
+        "X-RapidAPI-Host": "trueway-directions2.p.rapidapi.com",
+      },
+    };
+
     try {
-      const response = await fetch(
-        `http://router.project-osrm.org/route/v1/driving/${trackPoints}?overview=false`
-      );
+      const response = await fetch(url, options);
 
       if (!response.ok) {
         throw new Error("Не удалось загрузить маршрут. Попробуйте позже");
       }
 
-      const data = await response.json();
-      console.log(data.waypoints);
-
-      const waypoints = data.waypoints.map((waypoint) => {
-        return waypoint.location;
-      });
-
-      dispatch(routerActions.updateTrack(waypoints || null)); // возвращаем null в случае ошибки
+      const result = await response.json();
+      const waypoints = result.route.geometry.coordinates;
+      dispatch(routerActions.updateTrack(waypoints || [])); // Возвращаем пустой массив в случае ошибки
     } catch (error) {
-      alert(error);
+      dispatch(routerActions.setError({ message: error }));
     }
   };
 };
