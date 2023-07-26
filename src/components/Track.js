@@ -9,22 +9,24 @@ function Track(props) {
   const map = useMap();
   map.fitBounds(bounds);
 
-  // Массив координат точек маршрута
+  // Массив координат опорных точек маршрута
   const routePoints = selectedRoute && [...selectedRoute.coordinates];
+
+  // Массив координат точек трека
+  const waypoints = useSelector((store) => store.router.track); // Координаты трека
 
   return (
     <>
       {/* Отображение точек */}
-      {selectedRoute &&
-        routePoints.map((position, index) => {
-          return (
-            <Marker key={index} position={position}>
-              <Popup>{`Точка ${index + 1}: ${position}`}</Popup>
-            </Marker>
-          );
-        })}
+      {routePoints.map((position, index) => {
+        return (
+          <Marker key={index} position={position}>
+            <Popup>{`Точка ${index + 1}: ${position}`}</Popup>
+          </Marker>
+        );
+      })}
       {/* Отображение маршрута */}
-      <Polyline positions={props.waypoints} color="blue" />;
+      <Polyline positions={waypoints} color="blue" />;
     </>
   );
 }

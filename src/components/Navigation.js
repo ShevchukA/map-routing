@@ -11,14 +11,17 @@ function Navigation() {
   const routesIsLoading = useSelector((state) => state.router.routesIsLoading);
   const selectedRoute = useSelector((store) => store.router.selectedRoute);
 
+  // Маршруты для меню выбора
   const items = routes.map((route, index) => {
     return { label: route.title, key: index, icon: <EnvironmentOutlined /> };
   });
 
+  // меняем информацию о выбранном маршруте
   function selectionHandler(e) {
     dispatch(routerActions.selectRoute(Number(e.key)));
   }
 
+  // загружаем трек после выбора маршрута
   useEffect(() => {
     selectedRoute && dispatch(fetchTrack(selectedRoute.coordinates));
   }, [dispatch, selectedRoute]);

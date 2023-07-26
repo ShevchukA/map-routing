@@ -6,8 +6,8 @@ const routerSlice = createSlice({
     routes: [],
     selectedRoute: null,
     track: null,
-    trackIsLoading: false,
-    routesIsLoading: false,
+    trackIsLoading: true,
+    routesIsLoading: true,
   },
   reducers: {
     selectRoute(state, action) {
