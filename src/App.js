@@ -1,5 +1,5 @@
 import { Provider } from "react-redux";
-import Layout from "./components/Layout";
+import Layout from "./components/Layout/Layout";
 import store from "./store";
 
 function App() {

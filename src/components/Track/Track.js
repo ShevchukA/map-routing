@@ -1,6 +1,6 @@
 import { Polyline, Marker, Popup, useMap } from "react-leaflet";
 import { useSelector } from "react-redux";
-import { calculateBounds } from "../helpers/bounds-calculator";
+import { calculateBounds } from "../../helpers/bounds-calculator";
 
 function Track(props) {
   // Масштабирование карты по выбранному маршруту

@@ -1,7 +1,7 @@
-import { useSelector } from "react-redux";
 import "./Map.module.css";
+import Track from "../Track/Track";
+import { useSelector } from "react-redux";
 import { MapContainer, TileLayer } from "react-leaflet";
-import Track from "./Track";
 
 function Map() {
   const trackIsLoading = useSelector((store) => store.router.trackIsLoading);

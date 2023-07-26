@@ -2,7 +2,8 @@ import "./Navigation.module.css";
 import { Menu } from "antd";
 import { EnvironmentOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchTrack, routerActions } from "../store/router-slice";
+import { routerActions } from "../../store/router-slice";
+import { fetchTrack } from "../../store/thunks";
 import { useEffect } from "react";
 
 function Navigation() {

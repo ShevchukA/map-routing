@@ -1,9 +1,9 @@
-import { useEffect } from "react";
 import classes from "./Layout.module.css";
-import Map from "./Map";
-import Navigation from "./Navigation";
+import Map from "../Map/Map";
+import Navigation from "../Navigation/Navigation";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { fetchRoutes } from "../store/router-slice";
+import { fetchRoutes } from "../../store/thunks";
 
 function Layout() {
   const dispatch = useDispatch();
