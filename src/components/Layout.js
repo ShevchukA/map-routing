@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import classes from "./Layout.module.css";
 import Map from "./Map";
 import Navigation from "./Navigation";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchRoutes } from "../store/router-slice";
 
 function Layout() {
@@ -11,7 +11,7 @@ function Layout() {
   // подгружаем данные при первой загрузке
   useEffect(() => {
     dispatch(fetchRoutes());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className={classes.container}>
