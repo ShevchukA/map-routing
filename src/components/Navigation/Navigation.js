@@ -23,9 +23,9 @@ function Navigation() {
   }
 
   // загружаем трек после выбора маршрута
-  useEffect(() => {
-    selectedRoute && dispatch(fetchTrack(selectedRoute.coordinates));
-  }, [dispatch, selectedRoute]);
+  // useEffect(() => {
+  //   selectedRoute && dispatch(fetchTrack(selectedRoute.coordinates));
+  // }, [dispatch, selectedRoute]);
 
   return (
     <nav>

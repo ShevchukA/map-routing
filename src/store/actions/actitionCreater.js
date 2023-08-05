@@ -1,4 +1,5 @@
 import {
+  GET_ROUTES,
   SELECT_ROUTE,
   SET_ROUTE_IS_LOADING,
   UPDATE_ROUTES,
@@ -7,6 +8,15 @@ import {
   SET_ROUTE_ERROR,
   SET_TRACK_ERROR,
 } from "../constants";
+
+export const getRoutes = () => ({
+  type: GET_ROUTES,
+});
+
+export const updateRoutes = (payload) => ({
+  type: UPDATE_ROUTES,
+  payload,
+});
 
 export const selectRoute = (payload) => ({
   type: SELECT_ROUTE,
@@ -19,11 +29,6 @@ export const setRouteIsLoading = () => ({
 
 export const setTrackIsLoading = () => ({
   type: SET_TRACK_IS_LOADING,
-});
-
-export const updateRoutes = (payload) => ({
-  type: UPDATE_ROUTES,
-  payload,
 });
 
 export const updateTrack = (payload) => ({

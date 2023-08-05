@@ -7,4 +7,5 @@ export const GET_TRACK = "GET_TRACK";
 export const UPDATE_TRACK = "UPDATE_TRACK";
 export const SET_TRACK_IS_LOADING = "SET_TRACK_IS_LOADING";
 
-export const SET_ERROR = "SET_ERROR";
+export const SET_ROUTE_ERROR = "SET_ERROR";
+export const SET_TRACK_ERROR = "SET_ERROR";

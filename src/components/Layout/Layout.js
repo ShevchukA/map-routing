@@ -3,14 +3,14 @@ import Map from "../Map/Map";
 import Navigation from "../Navigation/Navigation";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { fetchRoutes } from "../../store/thunks";
+import { getRoutes } from "../../store/actions/actitionCreater";
 
 function Layout() {
   const dispatch = useDispatch();
 
   // подгружаем данные при первой загрузке
   useEffect(() => {
-    // dispatch(fetchRoutes());
+    dispatch(getRoutes()); // вызываем экшен с типом GET_ROUTES
   }, [dispatch]);
 
   return (
