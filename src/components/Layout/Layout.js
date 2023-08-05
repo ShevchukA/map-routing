@@ -10,7 +10,7 @@ function Layout() {
 
   // подгружаем данные при первой загрузке
   useEffect(() => {
-    dispatch(fetchRoutes());
+    // dispatch(fetchRoutes());
   }, [dispatch]);
 
   return (
