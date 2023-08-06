@@ -1,4 +1,4 @@
-import { takeEvery, call, put, select } from "redux-saga/effects";
+import { takeEvery, call, put, select, takeLatest } from "redux-saga/effects";
 import fetchRoutes from "../../api/routes";
 import fetchTrack from "../../api/track";
 
@@ -21,7 +21,7 @@ export default function* rootSaga() {
 
 function* watchRoutes() {
   yield takeEvery(GET_ROUTES, handleGetRoutes); // следим за вызовом экшена типа GET_ROUTES
-  yield takeEvery(SELECT_ROUTE, handleSelectRoute); // следим за вызовом экшена типа SELECT_ROUTE
+  yield takeLatest(SELECT_ROUTE, handleSelectRoute); // следим за вызовом экшена типа SELECT_ROUTE
 }
 
 function* handleGetRoutes() {
