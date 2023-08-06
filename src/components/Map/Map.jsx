@@ -2,11 +2,16 @@ import "./Map.module.css";
 import Track from "../Track/Track";
 import { useSelector } from "react-redux";
 import { MapContainer, TileLayer } from "react-leaflet";
+import {
+  selectCurrentRoute,
+  selectTrackLoadingStatus,
+  selectCurrentTrack,
+} from "../../store/selectors/selectors";
 
 function Map() {
-  const trackIsLoading = useSelector((store) => store.router.trackIsLoading);
-  const selectedRoute = useSelector((store) => store.router.selectedRoute);
-  const track = useSelector((store) => store.router.track); // Координаты трека
+  const trackIsLoading = useSelector(selectTrackLoadingStatus);
+  const selectedRoute = useSelector(selectCurrentRoute);
+  const track = useSelector(selectCurrentTrack); // Координаты трека
   const position = [59.938955, 30.315644]; // Координаты начальной позиции карты
 
   return (

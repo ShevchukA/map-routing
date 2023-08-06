@@ -3,12 +3,17 @@ import { Menu } from "antd";
 import { EnvironmentOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { selectRoute } from "../../store/actions/actitionCreator";
+import {
+  selectRoutesLoadingStatus,
+  selectRoutes,
+  selectTrackLoadingStatus,
+} from "../../store/selectors/selectors";
 
 function Navigation() {
   const dispatch = useDispatch();
-  const routes = useSelector((store) => store.router.routes); // Список маршрутов
-  const routesIsLoading = useSelector((state) => state.router.routesIsLoading); // Состояние загрузки выбранного маршрута
-  const trackIsLoading = useSelector((store) => store.router.trackIsLoading);
+  const routes = useSelector(selectRoutes); // Список маршрутов
+  const routesIsLoading = useSelector(selectRoutesLoadingStatus); // Состояние загрузки выбранного маршрута
+  const trackIsLoading = useSelector(selectTrackLoadingStatus);
 
   // Маршруты для меню выбора
   const items = routes.map((route, index) => {
