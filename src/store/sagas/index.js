@@ -38,9 +38,9 @@ function* handleGetRoutes() {
 function* handleSelectRoute() {
   yield put(setTrackIsLoading()); // обновляем стейт состояний загрузки трека
   try {
-    const { coordinates } = yield select((store) => store.router.selectedRoute);
-    const waypoints = yield call(fetchTrack, coordinates);
-    yield put(updateTrack(waypoints));
+    const { coordinates } = yield select((store) => store.router.selectedRoute); // берем из стейта координаты выбранного маршрута
+    const waypoints = yield call(fetchTrack, coordinates); // отправляем запрос через api, coordinates - аргумент функции fetchTrack
+    yield put(updateTrack(waypoints)); // обновляем стейт трека
   } catch {
     yield put(
       setTrackError("Не удалось загрузить выбранный маршрут. Попробуйте позже")
