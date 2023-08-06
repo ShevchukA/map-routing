@@ -11,7 +11,7 @@ const initialState = {
   routesIsLoading: true,
   selectedRoute: null,
   track: null,
-  trackIsLoading: true,
+  trackIsLoading: false,
 };
 
 const router = (state = initialState, { type, payload }) => {
@@ -21,8 +21,7 @@ const router = (state = initialState, { type, payload }) => {
     case UPDATE_ROUTES:
       return {
         ...state,
-        routes: [...payload],
-        selectedRoute: payload[0],
+        routes: payload,
         routesIsLoading: false,
       };
     case SELECT_ROUTE:

@@ -3,7 +3,7 @@ import Map from "../Map/Map";
 import Navigation from "../Navigation/Navigation";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getRoutes } from "../../store/actions/actitionCreater";
+import { getRoutes } from "../../store/actions/actitionCreator";
 
 function Layout() {
   const dispatch = useDispatch();

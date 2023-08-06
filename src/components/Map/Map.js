@@ -5,6 +5,8 @@ import { MapContainer, TileLayer } from "react-leaflet";
 
 function Map() {
   const trackIsLoading = useSelector((store) => store.router.trackIsLoading);
+  const selectedRoute = useSelector((store) => store.router.selectedRoute);
+  const track = useSelector((store) => store.router.track); // Координаты трека
   const position = [59.938955, 30.315644]; // Координаты начальной позиции карты
 
   return (
@@ -17,7 +19,11 @@ function Map() {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
-      {!trackIsLoading && <Track />}
+
+      {/* Если загрузка закончилась и маршрут доступен, то отображаем его на карте */}
+      {!trackIsLoading && track && (
+        <Track coordinates={selectedRoute.coordinates} waypoints={track} />
+      )}
     </MapContainer>
   );
 }
