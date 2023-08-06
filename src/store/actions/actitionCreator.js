@@ -1,7 +1,7 @@
 import {
   GET_ROUTES,
   SELECT_ROUTE,
-  SET_ROUTE_IS_LOADING,
+  SET_ROUTES_IS_LOADING,
   UPDATE_ROUTES,
   UPDATE_TRACK,
   SET_TRACK_IS_LOADING,
@@ -23,8 +23,8 @@ export const selectRoute = (payload) => ({
   payload,
 });
 
-export const setRouteIsLoading = () => ({
-  type: SET_ROUTE_IS_LOADING,
+export const setRoutesIsLoading = () => ({
+  type: SET_ROUTES_IS_LOADING,
 });
 
 export const setTrackIsLoading = () => ({

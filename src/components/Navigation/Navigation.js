@@ -27,7 +27,7 @@ function Navigation() {
       }`}</p>
       <Menu
         items={items}
-        // defaultSelectedKeys={["0"]}
+        defaultSelectedKeys={["0"]}
         mode="inline"
         theme="dark"
         onClick={selectionHandler}

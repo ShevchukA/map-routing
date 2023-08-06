@@ -1,6 +1,6 @@
 import {
   SELECT_ROUTE,
-  SET_ROUTE_IS_LOADING,
+  SET_ROUTES_IS_LOADING,
   UPDATE_ROUTES,
   UPDATE_TRACK,
   SET_TRACK_IS_LOADING,
@@ -8,7 +8,7 @@ import {
 
 const initialState = {
   routes: [],
-  routesIsLoading: true,
+  routesIsLoading: false,
   selectedRoute: null,
   track: null,
   trackIsLoading: false,
@@ -16,7 +16,7 @@ const initialState = {
 
 const router = (state = initialState, { type, payload }) => {
   switch (type) {
-    case SET_ROUTE_IS_LOADING:
+    case SET_ROUTES_IS_LOADING:
       return { ...state, routesIsLoading: true };
     case UPDATE_ROUTES:
       return {
